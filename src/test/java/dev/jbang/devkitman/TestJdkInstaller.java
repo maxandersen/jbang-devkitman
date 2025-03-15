@@ -20,6 +20,12 @@ import dev.jbang.devkitman.util.RemoteAccessProvider;
 public class TestJdkInstaller extends BaseTest {
 
 	@Test
+	void testSimple() {
+		jdkManager(JdkProviders.instance().allNames().toArray(new String[]{})).listAvailableJdks().forEach(jdk -> {
+			System.out.println(jdk);
+		});
+	}
+	@Test
 	void testInstall() throws IOException {
 		Path tmpJdk = Files.createTempFile("junit-test-jdk", ".zip");
 		try {
